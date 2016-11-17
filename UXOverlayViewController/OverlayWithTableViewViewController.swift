@@ -22,7 +22,7 @@ class OverlayWithTableViewViewController: UIViewController, UITableViewDelegate,
     }
     
     // MARK: - Scrollview
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     
         if(scrollView == self.tableView) {
             // its your tableView
@@ -42,7 +42,7 @@ class OverlayWithTableViewViewController: UIViewController, UITableViewDelegate,
             // snap back to view controller
             if abs(contentOffsetY) > snapThreshold {
 //                self.navigationController?.popViewControllerAnimated(true)
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -50,16 +50,16 @@ class OverlayWithTableViewViewController: UIViewController, UITableViewDelegate,
     
     
     // MARK: - Table view data source
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         return cell
     }
